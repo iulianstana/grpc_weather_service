@@ -1,0 +1,13 @@
+version: "2"
+services:
+
+  weather_service:
+    image: weather_service
+    ports:
+      - "50051:50051"
+  webserver:
+    image: weather_webserver
+    ports:
+      - "5005:5000"
+    volumes:
+      - .:/code
