@@ -1,0 +1,11 @@
+# use image
+FROM go_weather_base_image
+
+# copy my code to the container
+ADD . /opt/weather_service
+WORKDIR /opt/weather_service
+
+# expose port
+EXPOSE 50051
+
+CMD [ "go", "run", "weather_service_server/weather_service_service.go" ]
