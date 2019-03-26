@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='weather.proto',
   package='weather',
   syntax='proto3',
-  serialized_pb=_b('\n\rweather.proto\x12\x07weather\"/\n\x0eWeatherRequest\x12\x0c\n\x04\x63ity\x18\x01 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x02 \x01(\t\"&\n\x0fWeatherResponse\x12\x13\n\x0btemperature\x18\x01 \x01(\x02\x32J\n\x0eWeatherService\x12\x38\n\x03Get\x12\x17.weather.WeatherRequest\x1a\x18.weather.WeatherResponseB\tZ\x07weatherb\x06proto3')
+  serialized_pb=_b('\n\rweather.proto\x12\x07weather\"/\n\x0eWeatherRequest\x12\x0c\n\x04\x63ity\x18\x01 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x02 \x01(\t\"4\n\x0fWeatherResponse\x12\x13\n\x0btemperature\x18\x01 \x01(\x02\x12\x0c\n\x04\x63ity\x18\x02 \x01(\t2J\n\x0eWeatherService\x12\x38\n\x03Get\x12\x17.weather.WeatherRequest\x1a\x18.weather.WeatherResponseB\tZ\x07weatherb\x06proto3')
 )
 
 
@@ -77,6 +77,13 @@ _WEATHERRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='city', full_name='weather.WeatherResponse.city', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -90,7 +97,7 @@ _WEATHERRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=75,
-  serialized_end=113,
+  serialized_end=127,
 )
 
 DESCRIPTOR.message_types_by_name['WeatherRequest'] = _WEATHERREQUEST
@@ -121,8 +128,8 @@ _WEATHERSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=115,
-  serialized_end=189,
+  serialized_start=129,
+  serialized_end=203,
   methods=[
   _descriptor.MethodDescriptor(
     name='Get',

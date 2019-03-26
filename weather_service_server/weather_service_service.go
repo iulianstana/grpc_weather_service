@@ -42,7 +42,12 @@ func (s *server) Get(ctx context.Context, in *pb.WeatherRequest) (*pb.WeatherRes
 	fmt.Println(currentConditions)
 	firstCurrentCondition := currentConditions[0]
 
-	return &pb.WeatherResponse{Temperature: firstCurrentCondition.Temperature.Metric.Value}, nil
+	weatherResponse := &pb.WeatherResponse{
+		Temperature: firstCurrentCondition.Temperature.Metric.Value,
+		City:        firstLocation.LocalizedName,
+	}
+
+	return weatherResponse, nil
 }
 
 func main() {
