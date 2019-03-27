@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"google.golang.org/grpc"
 	"log"
 	"net"
@@ -25,21 +24,21 @@ func NewServer() *server {
 	return &server{weatherDriver: weatherDriver}
 }
 
-func (s *server) Get(ctx context.Context, in *pb.WeatherRequest) (*pb.WeatherResponse, error) {
-	log.Printf("Received: %v", in.City)
+func (s *server) Get(ctx context.Context, req *pb.WeatherRequest) (*pb.WeatherResponse, error) {
+	log.Printf("Received: %v", req.City)
 
-	locations, err := s.weatherDriver.GetLocations(in.City)
+	// Get location information from Weather API
+	locations, err := s.weatherDriver.GetLocations(req.City)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(locations)
 	firstLocation := locations[0]
 
+	// Get Current Conditions for first received location
 	currentConditions, err := s.weatherDriver.GetCurrentConditions(firstLocation.Key)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(currentConditions)
 	firstCurrentCondition := currentConditions[0]
 
 	weatherResponse := &pb.WeatherResponse{
