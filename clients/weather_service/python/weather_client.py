@@ -18,4 +18,6 @@ class WeatherClient(object):
         if type(request) == dict:
             request_obj = WeatherRequest(**request)
 
-        return MessageToDict(self.stub.Get(request_obj))
+        response = self.stub.Get(request_obj)
+
+        return MessageToDict(response, preserving_proto_field_name=True)

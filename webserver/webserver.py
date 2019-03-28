@@ -43,7 +43,9 @@ def get_weather():
     # get weather
     client = WeatherClient()
 
-    return jsonify(client.get({'city': city}))
+    current_conditions = client.get({'city': city})
+
+    return jsonify(current_conditions)
 
 
 if __name__ == '__main__':
