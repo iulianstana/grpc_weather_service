@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='weather.proto',
   package='weather',
   syntax='proto3',
-  serialized_pb=_b('\n\rweather.proto\x12\x07weather\"/\n\x0eWeatherRequest\x12\x0c\n\x04\x63ity\x18\x01 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x02 \x01(\t\"4\n\x0fWeatherResponse\x12\x13\n\x0btemperature\x18\x01 \x01(\x02\x12\x0c\n\x04\x63ity\x18\x02 \x01(\t2J\n\x0eWeatherService\x12\x38\n\x03Get\x12\x17.weather.WeatherRequest\x1a\x18.weather.WeatherResponseB\tZ\x07weatherb\x06proto3')
+  serialized_pb=_b('\n\rweather.proto\x12\x07weather\"/\n\x0eWeatherRequest\x12\x0c\n\x04\x63ity\x18\x01 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x02 \x01(\t\"`\n\x0fWeatherResponse\x12\x13\n\x0btemperature\x18\x01 \x01(\x02\x12\x0c\n\x04\x63ity\x18\x02 \x01(\t\x12*\n\x0cgeo_position\x18\x03 \x01(\x0b\x32\x14.weather.GeoPosition\"2\n\x0bGeoPosition\x12\x10\n\x08latitude\x18\x01 \x01(\x02\x12\x11\n\tlongitude\x18\x02 \x01(\x02\x32J\n\x0eWeatherService\x12\x38\n\x03Get\x12\x17.weather.WeatherRequest\x1a\x18.weather.WeatherResponseB\tZ\x07weatherb\x06proto3')
 )
 
 
@@ -84,6 +84,13 @@ _WEATHERRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='geo_position', full_name='weather.WeatherResponse.geo_position', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -97,11 +104,51 @@ _WEATHERRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=75,
-  serialized_end=127,
+  serialized_end=171,
 )
 
+
+_GEOPOSITION = _descriptor.Descriptor(
+  name='GeoPosition',
+  full_name='weather.GeoPosition',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='latitude', full_name='weather.GeoPosition.latitude', index=0,
+      number=1, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='longitude', full_name='weather.GeoPosition.longitude', index=1,
+      number=2, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=173,
+  serialized_end=223,
+)
+
+_WEATHERRESPONSE.fields_by_name['geo_position'].message_type = _GEOPOSITION
 DESCRIPTOR.message_types_by_name['WeatherRequest'] = _WEATHERREQUEST
 DESCRIPTOR.message_types_by_name['WeatherResponse'] = _WEATHERRESPONSE
+DESCRIPTOR.message_types_by_name['GeoPosition'] = _GEOPOSITION
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 WeatherRequest = _reflection.GeneratedProtocolMessageType('WeatherRequest', (_message.Message,), dict(
@@ -118,6 +165,13 @@ WeatherResponse = _reflection.GeneratedProtocolMessageType('WeatherResponse', (_
   ))
 _sym_db.RegisterMessage(WeatherResponse)
 
+GeoPosition = _reflection.GeneratedProtocolMessageType('GeoPosition', (_message.Message,), dict(
+  DESCRIPTOR = _GEOPOSITION,
+  __module__ = 'weather_pb2'
+  # @@protoc_insertion_point(class_scope:weather.GeoPosition)
+  ))
+_sym_db.RegisterMessage(GeoPosition)
+
 
 DESCRIPTOR.has_options = True
 DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('Z\007weather'))
@@ -128,8 +182,8 @@ _WEATHERSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=129,
-  serialized_end=203,
+  serialized_start=225,
+  serialized_end=299,
   methods=[
   _descriptor.MethodDescriptor(
     name='Get',

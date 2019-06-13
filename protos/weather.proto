@@ -16,10 +16,11 @@ message WeatherRequest {
 message WeatherResponse {
     float temperature = 1;
     string city = 2;
+    GeoPosition geo_position = 3;
 }
 
 // Demo
-//message GeoPosition {
-//    float latitude = 1;
-//    float longitude = 2;
-//}
+message GeoPosition {
+    float latitude = 1;
+    float longitude = 2;
+}

@@ -44,6 +44,10 @@ func (s *server) Get(ctx context.Context, req *pb.WeatherRequest) (*pb.WeatherRe
 	weatherResponse := &pb.WeatherResponse{
 		Temperature: firstCurrentCondition.Temperature.Metric.Value,
 		City:        firstLocation.LocalizedName,
+		GeoPosition: &pb.GeoPosition{
+			Latitude:  firstLocation.GeoPosition.Latitude,
+			Longitude: firstLocation.GeoPosition.Longitude,
+		},
 	}
 
 	return weatherResponse, nil
